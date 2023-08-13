@@ -2,7 +2,7 @@
 import { CarCardProps } from "@/types";
 import { useState } from "react";
 import Image from "next/image";
-import { BaseButton } from ".";
+import { BaseButton, CardDetailModal } from ".";
 import { calculateCarRent } from "@/utils";
 
 export default function CarCard({ car }: CarCardProps) {
@@ -65,6 +65,12 @@ export default function CarCard({ car }: CarCardProps) {
           />
         </div>
       </div>
+
+      <CardDetailModal
+        isOpen={isOpen}
+        closeModal={() => setIsOpen(false)}
+        car={car}
+      />
     </div>
   );
 }

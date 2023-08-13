@@ -19,6 +19,12 @@ export interface SearchManufacturerProps {
   setManufacturer?: (manufacturer: string) => void;
 }
 
+export interface CardDetailModalProps {
+  isOpen: boolean;
+  closeModal: () => void;
+  car: CarProps;
+}
+
 export interface CarCardProps {
   car: CarProps;
 }
