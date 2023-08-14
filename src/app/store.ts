@@ -1,6 +1,7 @@
 import { configureStore } from "@reduxjs/toolkit";
-import { setupListeners } from "@reduxjs/toolkit/query/react";
+import { setupListeners } from "@reduxjs/toolkit/query";
 import { carApi } from "../services/carApi";
+import { carImageApi } from "../services/carImageApi";
 
 export const store = configureStore({
   reducer: {

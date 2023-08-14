@@ -43,3 +43,8 @@ export interface CarProps {
   transmission: string;
   year: number;
 }
+
+export interface FetchCarImageProps {
+  car: CarProps;
+  angle?: string;
+}

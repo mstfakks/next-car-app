@@ -3,12 +3,13 @@ import { CarCardProps } from "@/types";
 import { useState } from "react";
 import Image from "next/image";
 import { BaseButton, CardDetailModal } from ".";
-import { calculateCarRent } from "@/utils";
+import { calculateCarRent, generateCarImageUrl } from "@/utils";
 
 export default function CarCard({ car }: CarCardProps) {
   const { city_mpg, year, make, model, transmission, drive } = car;
   const [isOpen, setIsOpen] = useState(false);
   const carRent = calculateCarRent(city_mpg, year);
+
   return (
     <div className="flex flex-col p-6 justify-center items-start text-black-100 bg-primary-blue-100 hover:bg-white hover:shadow-md rounded-3xl group">
       <div className="w-full flex justify-between items-start gap-2">
@@ -24,7 +25,7 @@ export default function CarCard({ car }: CarCardProps) {
 
       <div className="relative w-full h-40 my-3 object-contain">
         <Image
-          src="/hero.png"
+          src={generateCarImageUrl(car)}
           alt="car-model"
           fill
           priority
