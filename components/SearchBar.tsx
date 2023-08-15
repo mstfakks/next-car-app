@@ -28,7 +28,7 @@ export default function SearchBar() {
       return alert("Please enter a manufacturer or model");
     }
 
-    updateSearchParams(model.toLowerCase(), manufacturer.toLowerCase());
+    updateSearchParams(model?.toLowerCase(), manufacturer?.toLowerCase());
   };
 
   const updateSearchParams = (model: string, manufacturer: string) => {

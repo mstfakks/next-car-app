@@ -1,4 +1,4 @@
-import { CarProps } from "@/types";
+import { CarProps, FilterProps } from "@/types";
 
 export const calculateCarRent = (city_mpg: number, year: number) => {
   const basePricePerDay = 50;
@@ -9,6 +9,22 @@ export const calculateCarRent = (city_mpg: number, year: number) => {
   const ageRate = (new Date().getFullYear() - year) * ageFactor;
   const rentalRatePerDay = basePricePerDay + mileageRate + ageRate;
   return rentalRatePerDay.toFixed(0);
+};
+
+export const getCars = async (filters: FilterProps) => {
+  const headers = {
+    "X-RapidAPI-Key": "969ca17d14mshe356efe914657c7p1da10bjsnfb2bcae5476f",
+    "X-RapidAPI-Host": "cars-by-api-ninjas.p.rapidapi.com",
+  };
+  const { manufacturer, year, fuel, limit, model } = filters;
+  const data = await fetch(
+    `https://cars-by-api-ninjas.p.rapidapi.com/v1/cars?make=${manufacturer}&year=${year}&model=${model}&limit=${limit}&fuel_type=${fuel}`,
+    {
+      headers: headers,
+    }
+  );
+  const response = await data.json();
+  return response;
 };
 
 export const generateCarImageUrl = (car: CarProps, angle?: string) => {

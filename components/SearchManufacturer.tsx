@@ -16,13 +16,13 @@ export default function SearchManufacturer({
       ? manufacturers
       : manufacturers.filter((manufacturer) =>
           manufacturer
-            .toLowerCase()
-            .replace(/\s+/g, "")
-            .includes(query.toLowerCase().replace(/\s+/g, ""))
+            ?.toLowerCase()
+            ?.replace(/\s+/g, "")
+            ?.includes(query?.toLowerCase()?.replace(/\s+/g, ""))
         );
   return (
     <div className="flex-1 max-sm:w-full flex justify-start items-center">
-      <Combobox value={manufacturer} onChange={setManufacturer}>
+      <Combobox value={manufacturer} onChange={setManufacturer} nullable>
         <div className="relative w-full">
           <Combobox.Button className="absolute top-[14px]">
             <Image

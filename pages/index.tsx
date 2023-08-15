@@ -1,14 +1,13 @@
-import { Inter } from "next/font/google";
 import { CarCard, CustomFilter, Hero, SearchBar } from "@/components";
-import { useGetCarsQuery } from "@/src/services/carApi";
-import { SerializedError } from "@reduxjs/toolkit";
+import { CarProps, FilterProps } from "@/types";
+import { getCars } from "@/utils";
+import { GetServerSidePropsContext } from "next";
 
-const inter = Inter({ subsets: ["latin"] });
+interface HomeProps {
+  allCars: CarProps[];
+}
 
-export default function Home() {
-  const { data: allCars, isError, error } = useGetCarsQuery();
-  console.log("cars", allCars);
-
+export default function Home({ allCars }: HomeProps) {
   const isDataEmpty = !Array.isArray(allCars) || allCars.length < 1 || !allCars;
 
   return (
@@ -26,7 +25,7 @@ export default function Home() {
             <CustomFilter title="year" />
           </div>
         </div>
-        {!isDataEmpty && !isError ? (
+        {!isDataEmpty ? (
           <section>
             <div className="grid 2xl:grid-cols-4 xl:grid-cols-3 md:grid-cols-2 grid-cols-1 w-full gap-8 pt-14">
               {allCars?.map((car) => (
@@ -37,10 +36,25 @@ export default function Home() {
         ) : (
           <div className="mt-16 flex justify-center items-center flex-col gap-2">
             <h2 className="text-black text-xl font-bold">Oops, no results</h2>
-            <p>{(error as SerializedError)?.message}</p>
           </div>
         )}
       </div>
     </main>
   );
+}
+
+export async function getServerSideProps(context: GetServerSidePropsContext) {
+  const query = context.query as FilterProps;
+  const allCars = await getCars({
+    manufacturer: query?.manufacturer || "",
+    fuel: query?.fuel || "",
+    year: query?.year || 2022,
+    limit: query?.limit || 10,
+    model: query?.model || "",
+  });
+  return {
+    props: {
+      allCars,
+    },
+  };
 }
