@@ -1,4 +1,4 @@
-import { CarCard, CustomFilter, Hero, SearchBar } from "@/components";
+import { CarCard, CustomFilter, Hero, SearchBar, ShowMore } from "@/components";
 import { fuels, yearsOfProduction } from "@/constants";
 import { CarProps, FilterProps } from "@/types";
 import { getCars } from "@/utils";
@@ -33,6 +33,7 @@ export default function Home({ allCars }: HomeProps) {
                 <CarCard car={car} />
               ))}
             </div>
+            <ShowMore />
           </section>
         ) : (
           <div className="mt-16 flex justify-center items-center flex-col gap-2">

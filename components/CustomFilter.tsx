@@ -10,7 +10,10 @@ export default function CustomFilter({ title, options }: CustomFilterProps) {
   const router = useRouter();
 
   const handleUpdateParams = (event: { title: string; type: string }) => {
-    const newPathName = updateSearchParams(title, event.value.toLowerCase());
+    const newPathName = updateSearchParams(
+      title as string,
+      event.value.toLowerCase()
+    );
     router.push(newPathName);
   };
 
