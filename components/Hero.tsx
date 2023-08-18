@@ -3,7 +3,12 @@ import Image from "next/image";
 import BaseButton from "./BaseButton";
 
 export default function Hero() {
-  function handleScroll() {}
+  function handleScroll() {
+    const nextSection = document.getElementById("discover");
+    if (nextSection) {
+      nextSection.scrollIntoView({ behavior: "smooth" });
+    }
+  }
 
   return (
     <div className="flex xl:flex-row flex-col gap-5 relative z-0 max-w-[1440px] mx-auto">

@@ -49,7 +49,7 @@ export default function SearchBar() {
     const newPathName = `${
       window.location.pathname
     }?${searchParams.toString()}`;
-    router.push(newPathName);
+    router.push(newPathName, undefined, { scroll: false });
   };
 
   return (

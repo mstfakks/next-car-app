@@ -1,4 +1,4 @@
-import { CustomFilterProps } from "@/types";
+import { CustomFilterProps, OptionProps } from "@/types";
 import { Listbox, Transition } from "@headlessui/react";
 import { Fragment, useState } from "react";
 import Image from "next/image";
@@ -6,15 +6,19 @@ import { useRouter } from "next/router";
 import { updateSearchParams } from "@/utils";
 
 export default function CustomFilter({ title, options }: CustomFilterProps) {
-  const [selected, setSelected] = useState(options[0]);
+  const [selected, setSelected] = useState(options[0] as OptionProps);
   const router = useRouter();
 
-  const handleUpdateParams = (event: { title: string; type: string }) => {
+  const handleUpdateParams = (event: {
+    title: string;
+    type: string;
+    value: string;
+  }) => {
     const newPathName = updateSearchParams(
       title as string,
       event.value.toLowerCase()
     );
-    router.push(newPathName);
+    router.push(newPathName, undefined, { scroll: false });
   };
 
   return (
@@ -23,6 +27,7 @@ export default function CustomFilter({ title, options }: CustomFilterProps) {
         value={selected}
         onChange={(event) => {
           setSelected(event);
+          //@ts-ignore
           handleUpdateParams(event);
         }}
       >

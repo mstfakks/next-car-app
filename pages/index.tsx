@@ -1,8 +1,10 @@
+"use client";
 import { CarCard, CustomFilter, Hero, SearchBar, ShowMore } from "@/components";
 import { fuels, yearsOfProduction } from "@/constants";
 import { CarProps, FilterProps } from "@/types";
 import { getCars } from "@/utils";
 import { GetServerSidePropsContext } from "next";
+import { useRouter } from "next/router";
 
 interface HomeProps {
   allCars: CarProps[];
@@ -10,7 +12,8 @@ interface HomeProps {
 
 export default function Home({ allCars }: HomeProps) {
   const isDataEmpty = !Array.isArray(allCars) || allCars.length < 1 || !allCars;
-
+  const router = useRouter();
+  const { limit } = router.query;
   return (
     <main className="overflow-hidden">
       <Hero />
@@ -29,11 +32,14 @@ export default function Home({ allCars }: HomeProps) {
         {!isDataEmpty ? (
           <section>
             <div className="grid 2xl:grid-cols-4 xl:grid-cols-3 md:grid-cols-2 grid-cols-1 w-full gap-8 pt-14">
-              {allCars?.map((car) => (
-                <CarCard car={car} />
+              {allCars?.map((car, index) => (
+                <CarCard car={car} key={index} />
               ))}
             </div>
-            <ShowMore />
+            <ShowMore
+              pageNumber={(Number(limit) || 10) / 10}
+              isNext={(Number(limit) || 10) > allCars.length}
+            />
           </section>
         ) : (
           <div className="mt-16 flex justify-center items-center flex-col gap-2">

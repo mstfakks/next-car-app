@@ -11,8 +11,8 @@ export interface BaseButtonProps {
 }
 
 export interface CustomFilterProps {
-  title?: string;
-  options?: OptionProps[];
+  title: string;
+  options: OptionProps[];
 }
 
 export interface OptionProps {

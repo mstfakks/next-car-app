@@ -13,7 +13,7 @@ export const calculateCarRent = (city_mpg: number, year: number) => {
 
 export const getCars = async (filters: FilterProps) => {
   const headers = {
-    "X-RapidAPI-Key": "969ca17d14mshe356efe914657c7p1da10bjsnfb2bcae5476f",
+    "X-RapidAPI-Key": `${process.env.CAR_API_KEY}`,
     "X-RapidAPI-Host": "cars-by-api-ninjas.p.rapidapi.com",
   };
   const { manufacturer, year, fuel, limit, model } = filters;
@@ -31,7 +31,10 @@ export const generateCarImageUrl = (car: CarProps, angle?: string) => {
   const url = new URL("https://cdn.imagin.studio/getimage");
   const { make, year, model } = car;
 
-  url.searchParams.append("customer", "hrjavascript-mastery");
+  url.searchParams.append(
+    "customer",
+    `${process.env.NEXT_PUBLIC_CAR_IMAGE_API_KEY}`
+  );
   url.searchParams.append("make", make);
   url.searchParams.append("modelFamily", model.split(" ")[0]);
   url.searchParams.append("zoomType", "fullscreen");
