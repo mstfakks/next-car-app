@@ -1,4 +1,4 @@
-# Next Event App
+# Next Car App
 
 ## Live Project: [https://next-car-pj4msaobt-mstfakks.vercel.app/](https://next-car-pj4msaobt-mstfakks.vercel.app/)
 
