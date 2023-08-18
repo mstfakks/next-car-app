@@ -36,3 +36,4 @@ Upon launching the application, you can navigate to the cars catalogue by select
 - Nextjs SSR
 - Typescript
 - Tailwind
+- Headless UI
