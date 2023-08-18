@@ -1,8 +1,13 @@
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+# Next Event App
+
+## Live Project: [https://next-car-pj4msaobt-mstfakks.vercel.app/](https://next-car-pj4msaobt-mstfakks.vercel.app/)
+
+## Project Description
+The Car Hub application has been developed using TypeScript and Next.js. The home page of the application features a hero section and a car catalogue section containing cards for various cars.
 
 ## Getting Started
 
-First, run the development server:
+First, clone this code in your workspace, after install dependecies and run the development server:
 
 ```bash
 npm run dev
@@ -14,25 +19,20 @@ pnpm dev
 
 Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
 
-You can start editing the page by modifying `pages/index.tsx`. The page auto-updates as you edit the file.
+## Usage
+Upon launching the application, you can navigate to the cars catalogue by selecting "Explore Cars." In the filtering section, you can filter the cars by brand, model, fuel type, and year. For more detailed information about the cars, you can access it through the modal that opens when you click the "View More" button on the car card.
 
-[API routes](https://nextjs.org/docs/api-routes/introduction) can be accessed on [http://localhost:3000/api/hello](http://localhost:3000/api/hello). This endpoint can be edited in `pages/api/hello.ts`.
+### Hero Section
+![1-)Hero Section](https://github.com/mstfakks/next-car-app/assets/45832074/b5af9abc-17ac-4633-adf8-711676fa7899)
 
-The `pages/api` directory is mapped to `/api/*`. Files in this directory are treated as [API routes](https://nextjs.org/docs/api-routes/introduction) instead of React pages.
+### Car Catalogue
+![2-)Car Catalogue](https://github.com/mstfakks/next-car-app/assets/45832074/8129532c-1536-46f6-9970-e45dd72dda80)
 
-This project uses [`next/font`](https://nextjs.org/docs/basic-features/font-optimization) to automatically optimize and load Inter, a custom Google Font.
+### Footer Section
+![3-)Footer Section](https://github.com/mstfakks/next-car-app/assets/45832074/e678f674-57fc-42db-8782-9146330751ac)
 
-## Learn More
-
-To learn more about Next.js, take a look at the following resources:
-
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
-
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!
-
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
+## Used Technologies
+- Nextjs
+- Nextjs SSR
+- Typescript
+- Tailwind
